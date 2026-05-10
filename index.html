@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic Tac Toe | Cờ Ca-rô</title>
+  <meta name="description" content="Game Tic Tac Toe hiện đại với thiết kế đẹp mắt. Chơi với bạn bè hoặc đấu với AI!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-x">X</span>
+        <span class="logo-sep">✦</span>
+        <span class="logo-o">O</span>
+      </div>
+      <h1 class="title">Tic Tac Toe</h1>
+      <p class="subtitle">Cờ Ca-Rô Hiện Đại</p>
+    </header>
+
+    <!-- Mode Selector -->
+    <div class="mode-selector" id="mode-selector">
+      <button class="mode-btn active" id="btn-pvp" onclick="setMode('pvp')">
+        <span class="mode-icon">👥</span>
+        <span>2 Người Chơi</span>
+      </button>
+      <button class="mode-btn" id="btn-ai" onclick="setMode('ai')">
+        <span class="mode-icon">🤖</span>
+        <span>VS Máy</span>
+      </button>
+    </div>
+
+    <!-- Scoreboard -->
+    <div class="scoreboard">
+      <div class="score-card score-x">
+        <div class="score-symbol x-symbol">X</div>
+        <div class="score-info">
+          <span class="score-label" id="label-x">Người Chơi 1</span>
+          <span class="score-value" id="score-x">0</span>
+        </div>
+      </div>
+      <div class="score-card score-draw">
+        <div class="score-symbol draw-symbol">✦</div>
+        <div class="score-info">
+          <span class="score-label">Hòa</span>
+          <span class="score-value" id="score-draw">0</span>
+        </div>
+      </div>
+      <div class="score-card score-o">
+        <div class="score-symbol o-symbol">O</div>
+        <div class="score-info">
+          <span class="score-label" id="label-o">Người Chơi 2</span>
+          <span class="score-value" id="score-o">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Banner -->
+    <div class="status-banner" id="status-banner">
+      <div class="status-inner">
+        <div class="turn-indicator" id="turn-indicator">
+          <span class="turn-symbol" id="turn-symbol">X</span>
+          <span class="turn-text" id="turn-text">Lượt của Người Chơi 1</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Board -->
+    <div class="board-wrapper">
+      <div class="board" id="board">
+        <button class="cell" id="cell-0" onclick="handleClick(0)" aria-label="Ô 1"></button>
+        <button class="cell" id="cell-1" onclick="handleClick(1)" aria-label="Ô 2"></button>
+        <button class="cell" id="cell-2" onclick="handleClick(2)" aria-label="Ô 3"></button>
+        <button class="cell" id="cell-3" onclick="handleClick(3)" aria-label="Ô 4"></button>
+        <button class="cell" id="cell-4" onclick="handleClick(4)" aria-label="Ô 5"></button>
+        <button class="cell" id="cell-5" onclick="handleClick(5)" aria-label="Ô 6"></button>
+        <button class="cell" id="cell-6" onclick="handleClick(6)" aria-label="Ô 7"></button>
+        <button class="cell" id="cell-7" onclick="handleClick(7)" aria-label="Ô 8"></button>
+        <button class="cell" id="cell-8" onclick="handleClick(8)" aria-label="Ô 9"></button>
+      </div>
+      <!-- Win line overlay -->
+      <svg class="win-line-svg" id="win-line-svg" viewBox="0 0 3 3" xmlns="http://www.w3.org/2000/svg">
+        <line id="win-line" x1="0" y1="0" x2="0" y2="0" stroke-width="0.12" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions">
+      <button class="btn btn-primary" id="btn-restart" onclick="restartGame()">
+        <span class="btn-icon">↺</span> Chơi Lại
+      </button>
+      <button class="btn btn-secondary" id="btn-reset" onclick="resetScore()">
+        <span class="btn-icon">⊘</span> Reset Điểm
+      </button>
+    </div>
+  </div>
+
+  <!-- Result Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal">
+      <div class="modal-emoji" id="modal-emoji">🏆</div>
+      <h2 class="modal-title" id="modal-title">Người Chơi 1 Thắng!</h2>
+      <p class="modal-sub" id="modal-sub">Chúc mừng chiến thắng!</p>
+      <div class="modal-actions">
+        <button class="btn btn-primary" onclick="closeModalAndRestart()">
+          <span class="btn-icon">↺</span> Chơi Tiếp
+        </button>
+        <button class="btn btn-secondary" onclick="closeModal()">
+          Đóng
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
