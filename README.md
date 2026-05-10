@@ -139,5 +139,3 @@ AI sử dụng thuật toán **Minimax** — một thuật toán tìm kiếm to�
 - **SVG win line** vẽ đường thắng trực tiếp trên bàn cờ
 
 ---
-
-> Được tạo bởi [Antigravity](https://antigravity.dev) — AI Coding Assistant by Google DeepMind
